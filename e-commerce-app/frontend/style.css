@@ -1,0 +1,82 @@
+/* Reset some basic elements */
+body, h1, h2, h3, p, form {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a font family for the entire app */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+/* Style for the app logo */
+#start-screen img {
+  display: block;
+  margin: 0 auto; /* Center the logo */
+  max-width: 200px; /* Set a maximum width for the logo */
+}
+
+/* General form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space out form elements */
+  padding: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"],
+button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Hide elements with class 'hidden' */
+.hidden {
+  display: none;
+}
+
+/* Navigation styles */
+nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 10px 0;
+}
+
+nav a {
+  color: #007bff;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Section styles */
+section {
+  padding: 20px;
+}
+
+/* Profile page styles */
+#profile-page {
+  /* Add specific styles for the profile page */
+}
+
+/* Add any additional styles for your app */
