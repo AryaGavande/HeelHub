@@ -384,14 +384,9 @@ footer {
   padding: 10px;
 }
 
-.search-tab {
-  /* Style your search tab as needed */
-}
 
-.profile-tab {
-  font-size: 24px; /* Adjust size as needed */
-  padding: 0 10px; /* Spacing around the icon */
-}
+  
+
 @media screen and (max-width:480px) {
   nav{
     padding: 20px;

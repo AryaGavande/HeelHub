@@ -14,7 +14,7 @@
     <!-- Add any additional screens or components as necessary -->
 
     <!-- Include your JavaScript file -->
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>
 
@@ -34,5 +34,34 @@
         <input type="submit" value="Sign Up">
     </form>
     <p class="paragraph-login">Already have an account? <a href="index.html">Login here</a>.</p>
+
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            try {
+                const response = await fetch('http://localhost:8000/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await response.json();
+                
+                // Show a popup for successful signup
+                alert('Signup successful!');
+
+                console.log(data); // Handle the response data accordingly
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
 </body>
 </html>
