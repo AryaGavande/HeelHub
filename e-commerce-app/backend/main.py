@@ -11,9 +11,9 @@ conn.row_factory = sqlite3.Row
 app = FastAPI()
 
 
-@app.get("/")
-async def read_root():
-    return {"Hello", "World"}
+# @app.get("/")
+# async def read_root():
+#     return {"Hello", "World"}
 
 @app.post("/product")
 async def write_product(service_type: str, amount: float, name: str):
@@ -44,3 +44,18 @@ async def read_product(product_id):
         'amount': rows[2],
         'service_type':rows[3]
     }
+
+
+@app.get("/products")
+async def get_all_products():
+    rows = cursor.execute(f"SELECT * FROM products")
+    returnRows = []
+    for row in rows:
+        returnRows.append(
+            {
+                'product_id': row[0],
+                'name': row[1],
+                'amount': row[2],
+                'service_type': row[3]
+            }
+        )
