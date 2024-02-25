@@ -23,7 +23,7 @@ nav {
 .search {
   display: flex;
   align-items: center;
-  background-color: #4717f6;
+  background-color: #0E0B16;
   padding: 10px 20px;
   border-radius: 10px;
 }
@@ -59,13 +59,7 @@ nav {
 
 
 
-.sliderItem {
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
+
 
 
 .buyButton {
@@ -80,43 +74,21 @@ nav {
   z-index: 1;
   cursor: pointer;
 }
+/* Applying radial gradient to the whole page */
+body {
+  background: radial-gradient(shape size at position, start-color, ..., last-color);
+}
+
+/* Example: A simple radial gradient from lightblue to blue */
+body {
+  background: radial-gradient(circle, lightblue, rgb(2, 27, 45));
+}
 
 .buyButton:hover {
   background-color: white;
   color: black;
 }
 
-.sliderItem:nth-child(1) .sliderBg {
-  background-color: #cfb4ef;
-}
-.sliderItem:nth-child(2) .sliderBg {
-  background-color: rebeccapurple;
-}
-.sliderItem:nth-child(3) .sliderBg {
-  background-color: #cfb4ef;
-}
-.sliderItem:nth-child(4) .sliderBg {
-  background-color: cornflowerblue;
-}
-.sliderItem:nth-child(5) .sliderBg {
-  background-color: rgb(124, 115, 80);
-}
-
-.sliderItem:nth-child(1) .sliderPrice {
-  color: #369e62;
-}
-.sliderItem:nth-child(2) .sliderPrice {
-  color: white;
-}
-.sliderItem:nth-child(3) .sliderPrice {
-  color: teal;
-}
-.sliderItem:nth-child(4) .sliderPrice {
-  color: cornflowerblue;
-}
-.sliderItem:nth-child(5) .sliderPrice {
-  color: cornsilk;
-}
 
 .features {
   display: flex;
@@ -405,7 +377,21 @@ footer {
   font-weight: 300;
   font-size: 14px;
 }
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
 
+.search-tab {
+  /* Style your search tab as needed */
+}
+
+.profile-tab {
+  font-size: 24px; /* Adjust size as needed */
+  padding: 0 10px; /* Spacing around the icon */
+}
 @media screen and (max-width:480px) {
   nav{
     padding: 20px;

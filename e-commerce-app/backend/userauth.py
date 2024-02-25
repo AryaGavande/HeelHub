@@ -29,8 +29,8 @@ async def signup(username: str, password: str):
         INSERT INTO users (user_id, username, password) VALUES ('{user_id}', '{username}', '{password}')
     ''')
     conn.commit()
-
     return {"message": "User signed up successfully"}
+
 
 @app.post("/login")
 async def login(username: str, password: str):
