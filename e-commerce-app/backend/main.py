@@ -1,61 +1,84 @@
-from fastapi import FastAPI
-import sqlite3
-import uuid
-
-conn = sqlite3.connect('heelhub.db')
-
-cursor = conn.cursor()
-
-conn.row_factory = sqlite3.Row
+from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from pathlib import Path
 
 app = FastAPI()
 
+# Assuming 'frontend_path' is the path to your 'frontend' directory
+frontend_path = Path(__file__).resolve().parent.parent / 'frontend'
+app.mount("/static", StaticFiles(directory=str(frontend_path)), name="static")
 
-# @app.get("/")
-# async def read_root():
-#     return {"Hello", "World"}
+# Serve 'index.html' for the root URL
+@app.get("/")
+async def read_index():
+    index_path = frontend_path / 'index.html'
+    if not index_path.is_file():
+        raise HTTPException(status_code=404, detail="Index file not found")
+    return FileResponse(str(index_path))
+
+
+DATABASE_URL = 'heelhub.db'
+
+
+def get_db_connection():
+    conn = sqlite3.connect(DATABASE_URL)
+    conn.row_factory = sqlite3.Row
+    return conn
+
 
 @app.post("/product")
 async def write_product(service_type: str, amount: float, name: str):
-
-    # Write code here to write data we get from endpoint into database
-
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
     product_id = uuid.uuid4().hex
 
-    cursor.execute(f'''
-        INSERT INTO products (product_id, service_type, amount, name) VALUES ('{product_id}', '{service_type}', {amount}, '{name}')
-    ''')
+    cursor.execute('''
+        INSERT INTO products (product_id, service_type, amount, name) VALUES (?, ?, ?, ?)
+    ''', (product_id, service_type, amount, name))
 
     conn.commit()
+    conn.close()
 
-    return {
-        'product_id':product_id
-    }
-
-    return product_id
+    return {'product_id': product_id}
 
 
 @app.get("/product/{product_id}")
-async def read_product(product_id):
-    rows = cursor.execute(f"SELECT * FROM products where product_id = '{product_id}'").fetchone()
-    return {
-        'product_id': rows[0],
-        'name': rows[1],
-        'amount': rows[2],
-        'service_type':rows[3]
-    }
+async def read_product(product_id: str):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    row = cursor.execute("SELECT * FROM products WHERE product_id = ?", (product_id,)).fetchone()
+    conn.close()
+    
+    if row:
+        return {
+            'product_id': row['product_id'],
+            'name': row['name'],
+            'amount': row['amount'],
+            'service_type': row['service_type']
+        }
+    else:
+        return {"error": "Product not found"}
 
 
 @app.get("/products")
 async def get_all_products():
-    rows = cursor.execute(f"SELECT * FROM products")
-    returnRows = []
-    for row in rows:
-        returnRows.append(
-            {
-                'product_id': row[0],
-                'name': row[1],
-                'amount': row[2],
-                'service_type': row[3]
-            }
-        )
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    rows = cursor.execute("SELECT * FROM products").fetchall()
+    conn.close()
+    
+    returnRows = [
+        {
+            'product_id': row['product_id'],
+            'name': row['name'],
+            'amount': row['amount'],
+            'service_type': row['service_type']
+        }
+        for row in rows
+    ]
+    
+    return returnRows

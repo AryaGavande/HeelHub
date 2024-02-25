@@ -4,14 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search Bar Theme</title>
-<link rel="stylesheet" href="styles.css">
+<!-- Update the href to use the static endpoint -->
+<link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <div class="search-container">
         <input type="text" id="search-bar" placeholder="Search...">
         <button id="search-button">
-            <i class="icon-search"></i> <!-- Replace with actual search icon -->
+            <!-- If the icon is an image, use the /static endpoint -->
+            <img src="/static/path-to-your-icon.png" alt="Search" />
+            <!-- If using font icons, ensure the font library is correctly included in your styles.css -->
         </button>
     </div>
+
 </body>
 </html>
