@@ -25,17 +25,28 @@
   <div id="items" class="tab-content" style="display:none;">
     <h2>Items</h2>
     <!-- Add content for items here -->
+    <ul class="list"></ul>
   </div>
 </div>
 
 <script>
-function openTab(tabName) {
-  fetch('http://localhost:5000/products').then(response => {
+async function openTab(tabName) {
+  await fetch('http://localhost:8000/products').then(response => {
     return response.json();
   }).then(json => {
+    const list = document.querySelector('.list');
 
+    const products = json; 
+
+    console.log(json);
+
+    products.forEach(p => {
+      let item = document.createElement('li');
+      item.textContent = p.name; 
+      products.appendChild(item);
+    })
   })
-  
+
   var i, tabcontent, tabbuttons;
   tabcontent = document.getElementsByClassName("tab-content");
   for (i = 0; i < tabcontent.length; i++) {
