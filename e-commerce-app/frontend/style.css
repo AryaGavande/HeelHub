@@ -74,6 +74,23 @@ nav {
   z-index: 1;
   cursor: pointer;
 }
+.tab-button {
+  display: inline-block;
+  background-color: #4c75af; /* Green */
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.tab-button:hover {
+  background-color: #45a049;
+}
+
 /* Applying radial gradient to the whole page */
 body {
   background: radial-gradient(shape size at position, start-color, ..., last-color);

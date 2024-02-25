@@ -1,0 +1,136 @@
+/* Base styles to ensure consistency across browsers */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html, body {
+    scroll-behavior: smooth;
+    font-family: "Lato", sans-serif;
+    background: radial-gradient(circle, lightblue, rgb(2, 27, 45));
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Navigation styling */
+  nav {
+    background-color: #0E0B16;
+    color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+    background-color: #0E0B16;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  .search input[type="text"] {
+    border: none;
+    background-color: transparent;
+    color: white;
+    margin-left: 10px;
+  }
+  
+  /* Market place container and tab styling */
+  .marketplace-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tabs {
+    margin-bottom: 20px;
+  }
+  
+  .tab-button {
+    background-color: #4c75af;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tab-button:hover, .tab-button.active {
+    background-color: #45a049;
+  }
+  
+  .tab-content {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .navbar, .search, nav {
+      flex-direction: column;
+    }
+  
+    .search {
+      margin-top: 10px;
+    }
+  
+    .marketplace-container {
+      padding: 10px;
+    }
+  
+    .tab-button {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Additional styles for visual enhancement */
+  button:focus {
+    outline: none;
+  }
+  
+  input[type="text"]:focus {
+    outline: none;
+  }
+  
+  /* Hover effects and active states for interactive elements */
+  .navbar a:hover,
+  .navbar button:hover,
+  .tab-button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Utility classes for spacing and alignment */
+  .mt-20 {
+    margin-top: 20px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Ensure the first tab content is visible by default */
+  #services {
+    display: block;
+  }
+  

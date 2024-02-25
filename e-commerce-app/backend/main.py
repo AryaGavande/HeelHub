@@ -29,6 +29,12 @@ def get_db_connection():
 
 @app.post("/product")
 async def write_product(service_type: str, amount: float, name: str):
+    try:
+        # Convert amount to float
+        amount = float(amount)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid amount. Amount must be a valid number.")
+    
     conn = get_db_connection()
     cursor = conn.cursor()
     
@@ -42,6 +48,7 @@ async def write_product(service_type: str, amount: float, name: str):
     conn.close()
 
     return {'product_id': product_id}
+
 
 
 @app.get("/product/{product_id}")

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeelHub</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Start Screen -->
+<div id="start-screen">
+    <img src="Assets/logo.png" alt="HeelHub Logo">
+    <form id="product-form" action="/product" method="post">
+        <input type="text" id="service_type" name="service_type" placeholder="Service Type" required>
+        <input type="number" id="amount" name="amount" placeholder="Amount" required>
+        <input type="text" id="name" name="name" placeholder="Product Name" required>
+        <button type="submit">Submit</button>
+    </form>    
+    <div id="product-container">
+        <!-- Products will be displayed here -->
+    </div>
+</div>
+
+<script>
+    document.getElementById('product-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const serviceType = formData.get('service_type');
+        const amount = formData.get('amount');
+        const name = formData.get('name');
+
+        try {
+            const response = await fetch('/product', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ service_type: serviceType, amount: amount, name: name })
+            });
+
+            if (response.ok) {
+                // Redirect to the marketplace page upon successful form submission
+                window.location.href = 'marketplace.html';
+            } else {
+                alert('Failed to submit form. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+
+    // Fetch and display products when the page loads
+    fetchAndDisplayProducts();
+
+    async function fetchAndDisplayProducts() {
+        try {
+            const response = await fetch('/products');
+            const products = await response.json();
+
+            const productContainer = document.getElementById('product-container');
+            productContainer.innerHTML = ''; // Clear previous products
+
+            products.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.textContent = `Product Name: ${product.name}, Service Type: ${product.service_type}, Amount: ${product.amount}`;
+                productContainer.appendChild(productElement);
+            });
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    }
+</script>
+
+
+</body>
+</html>
