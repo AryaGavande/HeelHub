@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Page Title</title>
+  <title>HeelHub</title>
   <!-- Link to your CSS file -->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,49 +11,16 @@
 
     <!-- Start Screen -->
     <div id="start-screen">
-      <img src="HeelHub/e-commerce-app/src/frontend/Assets/LOGO.png" alt="HeelHub Logo">
+        <img src="Assets/logo.png" alt="HeelHub Logo">
         <form id="login-form">
             <input type="text" placeholder="Username">
             <input type="password" placeholder="Password">
             <button type="submit">Login</button>
         </form>
-        <button id="signup-button">Signup</button>
+        <a href="signup.html" id="signup-button" class="button">Sign up</a>
+        <!-- Existing Sign up link -->
+        <!-- Continue as Guest button -->
+        <a href="homescreen.html" id="continue-guest-button" class="button">Continue as Guest</a>
+
     </div>
 
-    <!-- Sign Up Screen -->
-    <div id="signup-screen" class="hidden">
-        <form id="signup-form">
-            <input type="text" placeholder="New Username">
-            <input type="password" placeholder="New Password">
-            <input type="tel" placeholder="Phone Number">
-            <input type="email" placeholder="UNC Email">
-            <button type="submit">Let's Go!</button>
-        </form>
-    </div>
-
-    <!-- Home Screen -->
-    <div id="home-screen" class="hidden">
-        <nav>
-            <a href="#services">Services</a>
-            <a href="#items">Items</a>
-            <!-- Add other navigation items as needed -->
-        </nav>
-        <section id="services">
-            <!-- Populate with services content -->
-        </section>
-        <section id="items">
-            <!-- Populate with items content -->
-        </section>
-    </div>
-
-    <!-- Profile Page -->
-    <div id="profile-page" class="hidden">
-        <!-- Profile information and settings -->
-    </div>
-
-    <!-- Add any additional screens or components as necessary -->
-
-    <!-- Include your JavaScript file -->
-    <script src="script.js"></script>
-</body>
-</html>

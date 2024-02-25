@@ -68,15 +68,214 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.main-nav a {
+  text-decoration: none;
+  margin: 10px;
+  color: #007bff;
+}
+
+.main-nav a:hover {
+  color: #0056b3;
+}
+
+.content-section {
+  margin: 20px;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.service, .item {
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+#home-screen {
+  margin: 20px;
+}
+
+.category h2 {
+  margin-left: 10px;
+}
+
+.items-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.item {
+  flex: 0 0 auto;
+  width: 160px; /* Adjust based on your image size */
+  margin-right: 20px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.item img {
+  width: 100%; /* Make images fill the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Optional: Rounded corners for images */
+}
+
+.items-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.items-container::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+.items-container::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+}
+
+.items-container {
+  scrollbar-width: thin;
+  scrollbar-color: #666 #ddd;
+}
+
+/* Add other CSS as needed */
+
 
 /* Section styles */
 section {
   padding: 20px;
 }
+/* Style for the paragraph */
+.login-reminder {
+  font-size: 16px; /* Example size, adjust as needed */
+  text-align: center; /* Centers the text if it fits your design */
+  margin-top: 20px; /* Adds some space above the paragraph */
+}
+
+/* Style for the link within the paragraph */
+.login-reminder a {
+  color: #007bff; /* Adjust the color to fit your design */
+  text-decoration: none; /* Removes underline from links */
+}
+
+/* Hover effect for the link */
+.login-reminder a:hover {
+  text-decoration: underline; /* Adds underline on hover for better accessibility */
+  color: #0056b3; /* Darker shade when hovering, adjust as needed */
+}
+
+/* Style for the paragraph */
+.paragraph-login {
+  font-size: 16px; /* Adjust the font size as needed */
+  color: #333; /* Dark grey text color; adjust as needed */
+  text-align: center; /* Center-align the text */
+  margin-top: 20px; /* Adds some space above the paragraph */
+}
+
+/* Style for the link within the paragraph */
+.paragraph-login a {
+  color: #007bff; /* Bright blue color for the link; adjust as needed */
+  text-decoration: none; /* Removes underline from the link */
+  font-weight: bold; /* Makes the link text bold */
+}
+
+/* Style for the link on hover and focus for better accessibility */
+.paragraph-login a:hover,
+.paragraph-login a:focus {
+  text-decoration: underline; /* Adds underline on hover/focus for better visibility */
+  color: #0056b3; /* A slightly darker blue on hover/focus; adjust as needed */
+}
+
 
 /* Profile page styles */
 #profile-page {
   /* Add specific styles for the profile page */
 }
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
 
 /* Add any additional styles for your app */
+
+/* For the login and sign up page */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'SF Pro Rounded Light', sans-serif;
+  background-color: #D8EBF8;
+  color: #333333; 
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 48px; 
+  font-weight: bold;
+  color: #2D3E50; 
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 38px;
+  font-weight: medium;
+  color: #FB93B8;
+}
+
+form {
+  background-color: white;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #A8A8A8; 
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  background-color: #2D3E50;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #FB93B8;
+}
+
+a {
+  color: #C9E7D5;
+}
