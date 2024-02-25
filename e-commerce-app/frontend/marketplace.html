@@ -4,12 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marketplace</title>
-<link rel="stylesheet" href="styles.css">
+<!-- Update the href to use the static endpoint -->
+<link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
 
 <div class="marketplace-container">
   <div class="tabs">
+    <!-- Ensure that the openTab function correctly references tab names -->
     <button class="tab-button" onclick="openTab('services')">Services</button>
     <button class="tab-button" onclick="openTab('items')">Items</button>
   </div>
@@ -37,7 +39,10 @@ function openTab(tabName) {
     tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
   }
   document.getElementById(tabName).style.display = "block";
-  event.currentTarget.className += " active";
+  // Use 'event' only if it's passed as a parameter to the function
+  if (event) {
+    event.currentTarget.className += " active";
+  }
 }
 </script>
 

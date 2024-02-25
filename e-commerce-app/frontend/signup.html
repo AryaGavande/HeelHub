@@ -1,65 +1,50 @@
-    <!-- Sign Up Screen -->
-    <!-- <div id="signup-screen" class="hidden">
-        <form id="signup-form">
-            <input type="text" placeholder="New Username">
-            <input type="password" placeholder="New Password">
-            <input type="tel" placeholder="Phone Number">
-            <input type="email" placeholder="UNC Email">
-            <button type="submit">Let's Go!</button>
-        </form>
-    </div> -->
-
-
-
-    <!-- Add any additional screens or components as necessary -->
-
-    <!-- Include your JavaScript file -->
-    <!-- <script src="script.js"></script> -->
-</body>
-</html>
-
-    <!-- For Signup page -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <!-- Update the href to use the static endpoint -->
+    <link rel="stylesheet" href="/static/style.css">
     <title>Sign Up</title>
 </head>
 <body>
-    <form action="http://localhost:5501/e-commerce-app/frontend/signup.html" method="post">
+    <!-- Update the action to your FastAPI signup endpoint -->
+    <form id="signup-form" action="/signup" method="post">
         <h2>Create Account</h2>
         <input type="text" id="username" name="username" placeholder="Username" required>
         <input type="password" id="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Sign Up">
+        <!-- Change the type to "button" to prevent form submission since we are using fetch -->
+        <input type="button" id="signup-button" value="Sign Up">
     </form>
-    <p class="paragraph-login">Already have an account? <a href="index.html">Login here</a>.</p>
+    <!-- Update the href to use the static endpoint -->
+    <p class="paragraph-login">Already have an account? <a href="/static/index.html">Login here</a>.</p>
 
-    
     <script>
-        document.querySelector('form').addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            const username = formData.get('username');
-            const password = formData.get('password');
+        document.getElementById('signup-button').addEventListener('click', async () => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
             try {
-                const response = await fetch('http://localhost:8000/signup', {
+                const response = await fetch('/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ username, password })
                 });
-                const data = await response.json();
-                
-                // Show a popup for successful signup
-                alert('Signup successful!');
-
-                console.log(data); // Handle the response data accordingly
+                if (response.ok) {
+                    const data = await response.json();
+                    // Show a popup for successful signup
+                    alert('Signup successful!');
+                    // Redirect to the login page or dashboard
+                    window.location.href = '/static/index.html';
+                } else {
+                    const errorData = await response.json();
+                    alert(`Signup failed: ${errorData.detail}`);
+                }
             } catch (error) {
                 console.error('Error:', error);
+                alert('An error occurred during signup.');
             }
         });
     </script>
